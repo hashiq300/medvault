@@ -77,7 +77,8 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        inter: '"Inter", sans-serif'
+        inter: '"Inter", sans-serif',
+        ibmflexserif: '"IBM Plex Serif", serif',
       }
     },
   },
