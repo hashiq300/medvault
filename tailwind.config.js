@@ -52,6 +52,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        darkjunglegreen: "#1C1E27",
+        philippinegray: "#8E8E8E",
+        malachite: "#03D858",
+        citrine: "#D8D003"
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -72,6 +76,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        inter: '"Inter", sans-serif'
+      }
     },
   },
   // eslint-disable-next-line no-undef

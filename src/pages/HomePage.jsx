@@ -1,8 +1,9 @@
+import MedicationIntake from "@/components/MedicationIntake"
 
 function HomePage() {
   return (
-    <div>
-      Hello from medVault
+    <div className="px-[1.4rem] pt-4">
+      <MedicationIntake />
     </div>
   )
 }
