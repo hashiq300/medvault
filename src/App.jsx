@@ -1,10 +1,17 @@
-import { Button } from "./components/ui/button";
+import { createBrowserRouter } from 'react-router-dom'
+import HomePage from "@/pages/HomePage";
+import { RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+  }
+])
+
 
 function App() {
-  return <div>
-    <h1>hello from medvault</h1>
-    <Button>Submit</Button>
-  </div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
