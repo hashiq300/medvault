@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import DocumentCard from "@/components/DocumentCard";
 import PageTitle from "@/components/PageTitle";
 import { Plus, ChevronRight, Type, Scan } from "lucide-react";
@@ -15,10 +15,15 @@ import {
 
 const DocumentsPage = () => {
   const [drawerContent, setDrawerContent] = useState(null);
-  const [drawerTitle, setDrawerTitle] = useState("Add files")
+  const [drawerTitle, setDrawerTitle] = useState("Add files");
+  const [files, setFiles] = useState(null)
+
+    const insuranceRef = useRef(null);
+    const hospitalReportRef = useRef(null);
+    const otherDocsRef = useRef(null);
 
   const resetDrawerContent = () => {
-    setDrawerTitle("Add files")
+    setDrawerTitle("Add files");
     setDrawerContent(
       <div>
         <button
@@ -30,7 +35,10 @@ const DocumentsPage = () => {
         </button>
         <hr color="#4E4E4E" />
 
-        <button onClick={() => setDrawerContentToPrescription()} className="flex items-center justify-between py-6 w-full">
+        <button
+          onClick={() => setDrawerContentToPrescription()}
+          className="flex items-center justify-between py-6 w-full"
+        >
           <p className=" font-medium text-xl">Prescription</p>
           <ChevronRight />
         </button>
@@ -40,47 +48,66 @@ const DocumentsPage = () => {
   };
 
   const setDrawerContentToDocs = () => {
+
+    const handleFileButtonClick = (ref) => {
+      ref.current.click();
+    };
+
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      setFiles(file)
+    };
+
     setDrawerContent(
       <div>
-        <button className="flex items-center justify-between py-6 w-full">
-          <p className="text-base">Insurance</p>
-          <ChevronRight />
-        </button>
-        <hr color="#4E4E4E" />
+        <div>
+          <input ref={insuranceRef} type="file" className=" hidden" onChange={handleFileChange}/>
+          <button onClick={() => handleFileButtonClick(insuranceRef)} className="flex items-center justify-between py-6 w-full">
+            <p className="text-base">Insurance</p>
+            <ChevronRight />
+          </button>
+          <hr color="#4E4E4E" />
+        </div>
 
-        <button className="flex items-center justify-between py-6 w-full">
-          <p className="text-base">Hospital Report</p>
-          <ChevronRight />
-        </button>
-        <hr color="#4E4E4E" />
+        <div>
+          <input ref={hospitalReportRef} type="file" className=" hidden" onChange={handleFileChange}/>
+          <button onClick={() => handleFileButtonClick(hospitalReportRef)} className="flex items-center justify-between py-6 w-full">
+            <p className="text-base">Hospital Report</p>
+            <ChevronRight />
+          </button>
+          <hr color="#4E4E4E" />
+        </div>
 
-        <button className="flex items-center justify-between py-6 w-full">
-          <p className="text-base">Other Documents</p>
-          <ChevronRight />
-        </button>
-        <hr color="#4E4E4E" />
+        <div>
+          <input ref={otherDocsRef} type="file" className="hidden" onChange={handleFileChange}/>
+          <button onClick={() => handleFileButtonClick(otherDocsRef)} className="flex items-center justify-between py-6 w-full">
+            <p className="text-base">Other Documents</p>
+            <ChevronRight />
+          </button>
+          <hr color="#4E4E4E" />
+        </div>
       </div>
     );
   };
 
   const setDrawerContentToPrescription = () => {
-    setDrawerTitle("Add prescription")
+    setDrawerTitle("Add prescription");
     setDrawerContent(
       <div>
         <h4 className=" text-lg font-medium pt-5">Choose input</h4>
         <div className="flex justify-evenly items-center pt-10">
-            <button className=" w-28 h-28 bg-[#2F2F40] rounded-lg flex flex-col justify-center items-center">
-                <Type size={35} />
-                <p className=" text-sm">Type</p>
-            </button>
-            <button className=" w-28 h-28 bg-[#2F2F40] rounded-lg flex flex-col justify-center items-center">
-                <Scan size={35} />
-                <p className=" text-sm">Scan</p>
-            </button>
+          <button className=" w-28 h-28 bg-[#2F2F40] rounded-lg flex flex-col justify-center items-center">
+            <Type size={35} />
+            <p className=" text-sm">Type</p>
+          </button>
+          <button className=" w-28 h-28 bg-[#2F2F40] rounded-lg flex flex-col justify-center items-center">
+            <Scan size={35} />
+            <p className=" text-sm">Scan</p>
+          </button>
         </div>
       </div>
     );
-  }
+  };
 
   return (
     <>
@@ -120,7 +147,7 @@ const DocumentsPage = () => {
           <DrawerContent className="bg-[#1C1E27] rounded-2xl h-[50%] border-none">
             <DrawerHeader>
               <DrawerTitle className=" text-left">
-                <PageTitle title={drawerTitle}/>
+                <PageTitle title={drawerTitle} />
               </DrawerTitle>
               <DrawerDescription>{drawerContent}</DrawerDescription>
             </DrawerHeader>
