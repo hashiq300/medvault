@@ -71,7 +71,7 @@
     @apply border-border;
   }
   body {
-    @apply text-foreground;
+    @apply text-foreground font-inter;
     background-color: #16161A;
   }
 }
