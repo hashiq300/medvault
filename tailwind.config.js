@@ -55,7 +55,8 @@ module.exports = {
         darkjunglegreen: "#1C1E27",
         philippinegray: "#8E8E8E",
         malachite: "#03D858",
-        citrine: "#D8D003"
+        citrine: "#D8D003",
+        gunmetal: "#2F2F40",
       },
       borderRadius: {
         lg: "var(--radius)",

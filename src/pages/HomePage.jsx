@@ -1,5 +1,6 @@
 import InsightSection from "@/components/InsightSection";
 import MedicationIntake from "@/components/MedicationIntake";
+import QuickDocumentSection from "@/components/QuickDocumentSection";
 
 function HomePage() {
   return (
@@ -7,6 +8,7 @@ function HomePage() {
       <div className="space-y-6">
         <MedicationIntake />
         <InsightSection />
+        <QuickDocumentSection />
       </div>
     </div>
   );
