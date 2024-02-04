@@ -41,7 +41,6 @@ const DocumentsPage = () => {
         <button className="w-full rounded-2xl bg-[#1A4CD3] py-4">
           Confirm
         </button>
-
       </div>
     )
   }
