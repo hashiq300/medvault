@@ -23,7 +23,7 @@ const BottomNavigation = () => {
             color={isActive("/documents") ? "#1A4CD3" : "#FFF"}
           />
         </Link>
-        <Link>
+        <Link to="/activity">
           <LineChart
             size={24}
             color={isActive("/activity") ? "#1A4CD3" : "#FFF"}

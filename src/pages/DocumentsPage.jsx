@@ -161,7 +161,7 @@ const DocumentsPage = () => {
 
   return (
     <>
-      <div className=" px-4 pb-44">
+      <div className="px-4 pb-44">
         <PageTitle title="Documents" />
         <div className="flex flex-col gap-5 pt-6">
           <DocumentCard

@@ -3,6 +3,10 @@ import HomePage from "@/pages/HomePage";
 import DocumentsPage from "./pages/DocumentsPage";
 import { RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
+import StepsPage from "./pages/ActivityPage/StepsPage";
+import VitalsPage from "./pages/ActivityPage/VitalsPage";
+import SleepPage from "./pages/ActivityPage/SleepPage";
 
 const router = createBrowserRouter([
   {
@@ -11,8 +15,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "documents", element: <DocumentsPage /> },
+      { path: "activity", element: <ActivityPage /> },
+      { path: "steps", element: <StepsPage /> },
+      { path: "vitals", element: <VitalsPage /> },
+      { path: "sleep", element: <SleepPage /> },
     ],
   },
+  { path: "*", element: <div>Page not found</div> },
 ]);
 
 function App() {
