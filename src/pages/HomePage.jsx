@@ -2,6 +2,7 @@ import React from "react";
 import InsightSection from "@/components/InsightSection";
 import MedicationIntake from "@/components/MedicationIntake";
 import ProgressBar from "@/components/ProgressBar";
+import PinnedDocuments from "@/components/PinnedDocuments";
 
 function HomePage() {
   return (
@@ -10,6 +11,7 @@ function HomePage() {
         <ProgressBar/>
         <MedicationIntake />
         <InsightSection />
+        <PinnedDocuments/>
       </div>
     </div>
   );
