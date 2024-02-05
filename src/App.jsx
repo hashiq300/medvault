@@ -7,6 +7,7 @@ import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import StepsPage from "./pages/ActivityPage/StepsPage";
 import VitalsPage from "./pages/ActivityPage/VitalsPage";
 import SleepPage from "./pages/ActivityPage/SleepPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "sleep", element: <SleepPage /> },
     ],
   },
+  { path: "/profile", element: <ProfilePage/> },
   { path: "*", element: <div>Page not found</div> },
 ]);
 
