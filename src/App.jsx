@@ -13,6 +13,7 @@ import VitalsPage from "./pages/ActivityPage/VitalsPage";
 import SleepPage from "./pages/ActivityPage/SleepPage";
 import ProfilePage from "./pages/ProfilePage";
 import EditProfilePage from "./pages/EditProfilePage";
+import ChatPage from "./pages/ChatPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "steps", element: <StepsPage /> },
       { path: "vitals", element: <VitalsPage /> },
       { path: "sleep", element: <SleepPage /> },
+      { path: "chat", element: <ChatPage />}
     ],
   },
   { path: "/profile", element: <ProfilePage/> },
