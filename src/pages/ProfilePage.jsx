@@ -1,7 +1,9 @@
 import React from "react";
 import BottomNavigation from "@/components/BottomNavigation";
-import { Pen, Trash, HelpCircle } from "lucide-react";
+import { Pen, Trash, HelpCircle, LogOut } from "lucide-react";
 import userStore from "@/store/userStore";
+import { signOut } from "firebase/auth";
+import { auth } from "@/config/firebase";
 
 const ProfilePage = () => {
   const { user } = userStore();
@@ -18,7 +20,7 @@ const ProfilePage = () => {
         />
         <img
           className=" w-28 h-28 rounded-full object-cover absolute bottom-[-55px]"
-          src={user.photoURL}
+          src={user?.photoURL}
           alt="avatar"
         />
       </div>
@@ -26,19 +28,19 @@ const ProfilePage = () => {
       <div className="pt-16 px-4 pb-44 flex flex-col gap-12">
         <div>
           <h3 className=" text-center text-2xl font-medium">
-            {user.displayName}
+            {user?.displayName}
           </h3>
           <p className=" text-center text-[#707070] text-lg mt-3">
             {/* 22 F | TX, USA */}
           </p>
           <p className=" text-center text-[#707070] text-lg mt-3">
             {/* jjones@outlook.com | +1 (323) 234 3423 */}
-            {`${user.email} `}
+            {`${user?.email} `}
           </p>
         </div>
 
         <div className=" flex flex-col gap-4">
-          <a href="/edit-profile">
+          <a href="/profile/edit">
             <button className="w-full flex items-center gap-5 bg-[#1C1E27] p-5 rounded-2xl">
               <Pen size={30} />
               <p>Edit profile</p>
@@ -48,6 +50,11 @@ const ProfilePage = () => {
           <button className="w-full flex items-center gap-5 bg-[#1C1E27] p-5 rounded-2xl">
             <HelpCircle size={30} />
             <p>Help</p>
+          </button>
+
+          <button onClick={() => signOut(auth)} className="w-full flex items-center gap-5 bg-[#1C1E27] p-5 rounded-2xl">
+            <LogOut size={30} />
+            <p>Logout</p>
           </button>
 
           <button className="w-full flex items-center gap-5 bg-[#1C1E27] p-5 rounded-2xl">

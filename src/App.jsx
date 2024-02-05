@@ -17,7 +17,7 @@ import EditProfilePage from "./pages/EditProfilePage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ProtectedLayout />,
+    element: <ProtectedLayout withAvatar={true} />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "documents", element: <DocumentsPage /> },
@@ -25,16 +25,22 @@ const router = createBrowserRouter([
       { path: "steps", element: <StepsPage /> },
       { path: "vitals", element: <VitalsPage /> },
       { path: "sleep", element: <SleepPage /> },
+      { path: "/profile", element: <ProfilePage /> },
     ],
   },
-  { path: "/profile", element: <ProfilePage/> },
-  { path: "/edit-profile", element: <EditProfilePage/> },
+  {
+    path: "/profile",
+    element: <ProtectedLayout />,
+    children: [
+      { index: true, element: <ProfilePage /> },
+      { path: "edit", element: <EditProfilePage /> },
+    ],
+  },
   { path: "*", element: <div>Page not found</div> },
   {
     path: "/getting-started",
     element: <GettingStartedPage />,
   },
-   
 ]);
 
 function App() {

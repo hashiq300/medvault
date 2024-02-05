@@ -9,7 +9,7 @@ const EditProfilePage = () => {
       <div className="relative w-full flex justify-center">
         <img
           className="w-full h-[196px] object-cover"
-          src="images/user_bg.png"
+          src="/images/user_bg.png"
           alt="cover_image"
         />
         <img

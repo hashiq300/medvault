@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
-function ProtectedLayout() {
+function ProtectedLayout({ withAvatar }) {
   const { user, isLoaded } = userStore();
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function ProtectedLayout() {
     return null;
   }
   return (
-     <Layout>
+     <Layout withAvatar={withAvatar}>
           <Outlet />
      </Layout>
   );
