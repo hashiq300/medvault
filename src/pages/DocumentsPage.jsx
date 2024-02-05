@@ -287,6 +287,11 @@ const DocumentsPage = () => {
                 url={doc.url}
               />
             ))}
+            {!loading && allDocs.length === 0 && (
+              <>
+              <h2 className="text-center text-red-800">No Documents Uploaded</h2>
+              </>
+            )}
         </div>
 
         <Drawer>
