@@ -1,4 +1,3 @@
-import React from "react";
 import { Home, NotebookText, LineChart, MessageCircleMore } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";

@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout";
 import userStore from "@/store/userStore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +16,11 @@ function ProtectedLayout() {
   if (user === null) {
     return null;
   }
-  return <Outlet />;
+  return (
+     <Layout>
+          <Outlet />
+     </Layout>
+  );
 }
 
 export default ProtectedLayout;

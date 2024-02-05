@@ -36,7 +36,7 @@ const DocumentsPage = () => {
         <InputBox placeholder="Frequency" value="3"/>
         <button className=" w-full flex flex-row gap-1 justify-center items-center">
           <PlusIcon size={20} color="#707070"/>
-          <p className="text-[#707070] text-base">add more details</p>
+          <span className="text-[#707070] text-base">add more details</span>
         </button>
         <button className="w-full rounded-2xl bg-[#1A4CD3] py-4">
           Confirm
@@ -53,7 +53,7 @@ const DocumentsPage = () => {
           onClick={() => setDrawerContentToDocs()}
           className="flex items-center justify-between py-6 w-full"
         >
-          <p className=" font-medium text-xl">Document</p>
+          <span className=" font-medium text-xl">Document</span>
           <ChevronRight />
         </button>
         <hr color="#4E4E4E" />
@@ -62,7 +62,7 @@ const DocumentsPage = () => {
           onClick={() => setDrawerContentToPrescription()}
           className="flex items-center justify-between py-6 w-full"
         >
-          <p className=" font-medium text-xl">Prescription</p>
+          <span className=" font-medium text-xl">Prescription</span>
           <ChevronRight />
         </button>
         <hr color="#4E4E4E" />
@@ -93,7 +93,7 @@ const DocumentsPage = () => {
             onClick={() => handleFileButtonClick(insuranceRef)}
             className="flex items-center justify-between py-6 w-full"
           >
-            <p className="text-base">Insurance</p>
+            <span className="text-base">Insurance</span>
             <ChevronRight />
           </button>
           <hr color="#4E4E4E" />
@@ -110,7 +110,7 @@ const DocumentsPage = () => {
             onClick={() => handleFileButtonClick(hospitalReportRef)}
             className="flex items-center justify-between py-6 w-full"
           >
-            <p className="text-base">Hospital Report</p>
+            <span className="text-base">Hospital Report</span>
             <ChevronRight />
           </button>
           <hr color="#4E4E4E" />
@@ -127,7 +127,7 @@ const DocumentsPage = () => {
             onClick={() => handleFileButtonClick(otherDocsRef)}
             className="flex items-center justify-between py-6 w-full"
           >
-            <p className="text-base">Other Documents</p>
+            <span className="text-base">Other Documents</span>
             <ChevronRight />
           </button>
           <hr color="#4E4E4E" />
