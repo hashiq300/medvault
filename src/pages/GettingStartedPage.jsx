@@ -51,7 +51,7 @@ function GettingStartedPage() {
           className="inline-flex gap-2.5 justify-center items-center bg-white text-black w-full py-5 rounded-[0.625rem] active:bg-white/90 transition-colors"
         >
           <FcGoogle size={32} />
-          <span>Sign in with Google</span>
+          <span className="text-black">Sign in with Google</span>
         </button>
       </div>
     </main>
