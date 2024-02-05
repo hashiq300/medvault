@@ -1,13 +1,11 @@
-import React, { useState, useRef } from "react";
+import  { useState, useRef } from "react";
 import DocumentCard from "@/components/DocumentCard";
 import PageTitle from "@/components/PageTitle";
 import { Plus, ChevronRight, Type, Scan } from "lucide-react";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -15,9 +13,24 @@ import {
 import InputBox from "@/components/InputBox";
 import { PlusIcon } from "lucide-react";
 import { storage } from "@/config/firebase";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import {
+  ref,
+  getDownloadURL,
+  uploadBytesResumable,
+  listAll,
+  getMetadata,
+} from "firebase/storage";
 import userStore from "@/store/userStore";
 import PrescriptionInput from "@/components/PrescriptionInput";
+import { useEffect } from "react";
+import { Loader2 } from "lucide-react";
+
+function getTypeOfDocument(name) {
+  if (name === "insurance") return "insurance";
+  if (name === "hospital_report") return "Hospital Report";
+  if (name === "other_docs") return "Other Documents";
+}
+
 
 const DocumentsPage = () => {
   const [drawerContent, setDrawerContent] = useState(null);
@@ -25,8 +38,12 @@ const DocumentsPage = () => {
   const [files, setFiles] = useState(null);
   const [progresspercent, setProgresspercent] = useState(0);
   const [previewUrl, setPreviewUrl] = useState("");
-  const [docUrl, setDocUrl] = useState(null);
+  const [, setDocUrl] = useState(null);
   const [uploadFileType, setUploadFileType] = useState("");
+  const [insuranceDocs, setInsuranceDocs] = useState([]);
+  const [hospitalReportDocs, setHospitalReportDocs] = useState([]);
+  const [otherDocs, setOtherDocs] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [medicineName, setMedicineName] = useState("");
   const [frequency, setFrequency] = useState("");
@@ -100,6 +117,41 @@ const DocumentsPage = () => {
   };
 
   // name, dose, frequency, remarks
+
+        });
+      }
+    );
+  };
+
+  useEffect(() => {
+    const fetchDocuments = async (name) => {
+      const documentFiles = ref(storage, `${user?.uid}/documents/${name}`);
+      const list = await listAll(documentFiles);
+      let documentUrls = [];
+      for (let i = 0; i < list.items.length; i++) {
+        const url = await getDownloadURL(list.items[i]);
+        documentUrls.push({
+          url: url,
+          name: list.items[i].name,
+          type: getTypeOfDocument(name),
+          uploadedOn: (await getMetadata(list.items[i])).timeCreated,
+        });
+      }
+      return documentUrls;
+    };
+    setLoading(true);
+    Promise.all([
+      fetchDocuments("insurance").then((data) => setInsuranceDocs(data)),
+      fetchDocuments("hospital_report").then((data) =>
+        setHospitalReportDocs(data)
+      ),
+      fetchDocuments("other_docs").then((data) => setOtherDocs(data)),
+    ]).then(() => setLoading(false));
+  }, [user?.uid]);
+
+  const allDocs = [...insuranceDocs, ...hospitalReportDocs, ...otherDocs];
+  // name dose, frequency, remarks
+
 
   const scanDocument = () => {
     scanDocRef.current.click();
@@ -240,24 +292,26 @@ const DocumentsPage = () => {
       <div className="px-4 pb-40">
         <PageTitle title="Documents" />
         <div className="flex flex-col gap-5 pt-6">
-          <DocumentCard
-            type="Life Insurance"
-            name="Aster MIMS"
-            date="03-10-2023"
-          />
-          <DocumentCard type="Life Insurance" name="Aster MIMS" />
-          <DocumentCard
-            type="Life Insurance"
-            name="Aster MIMS"
-            date="03-10-2023"
-          />
-          <DocumentCard
-            type="Life Insurance"
-            name="Aster MIMS"
-            date="03-10-2023"
-          />
-          <DocumentCard type="Life Insurance" name="Aster MIMS" />
-          <DocumentCard type="Life Insurance" name="Aster MIMS" />
+          {loading && (
+            <Loader2 className="w-10 h-10 animate-spin mx-auto mt-8" />
+          )}
+          {!loading &&
+            allDocs.map((doc, index) => (
+              <DocumentCard
+                key={index}
+                type={doc.name.split(".")[0]}
+                name={doc.type}
+                date={new Intl.DateTimeFormat("en-US", {
+                  dateStyle: "medium",
+                }).format(new Date(doc.uploadedOn))}
+                url={doc.url}
+              />
+            ))}
+            {!loading && allDocs.length === 0 && (
+              <>
+              <h2 className="text-center text-red-800">No Documents Uploaded</h2>
+              </>
+            )}
         </div>
 
         <Drawer>
