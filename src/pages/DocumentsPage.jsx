@@ -116,13 +116,6 @@ const DocumentsPage = () => {
     );
   };
 
-  // name, dose, frequency, remarks
-
-        });
-      }
-    );
-  };
-
   useEffect(() => {
     const fetchDocuments = async (name) => {
       const documentFiles = ref(storage, `${user?.uid}/documents/${name}`);
