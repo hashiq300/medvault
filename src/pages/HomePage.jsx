@@ -4,7 +4,7 @@ import QuickDocumentSection from "@/components/QuickDocumentSection";
 
 function HomePage() {
   return (
-    <div className="px-[1.4rem] pt-4">
+    <div className="px-[1.4rem] py-4">
       <div className="space-y-6">
         <MedicationIntake />
         <InsightSection />
