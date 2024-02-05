@@ -55,7 +55,9 @@ module.exports = {
         darkjunglegreen: "#1C1E27",
         philippinegray: "#8E8E8E",
         malachite: "#03D858",
-        citrine: "#D8D003"
+        citrine: "#D8D003",
+        gunmetal: "#2F2F40",
+        lightsilver: "#D6D6D6",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -79,6 +81,13 @@ module.exports = {
       fontFamily: {
         inter: '"Inter", sans-serif',
         ibmflexserif: '"IBM Plex Serif", serif',
+      },
+      fontSize: {
+        "3.5xl": "2rem",
+        "2.5xl": "1.75rem",
+      },
+      backgroundImage: {
+        gettingstarted: "url('/images/getting-started.png')",
       }
     },
   },

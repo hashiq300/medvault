@@ -75,7 +75,7 @@
     color: #fff
   }
   body {
-    @apply text-foreground font-inter;
+    @apply text-white font-inter;
     background-color: #16161A;
   }
 }
