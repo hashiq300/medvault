@@ -24,7 +24,7 @@ const StepsPage = () => {
     dailySteps.push(stepsPerDay);
   });
 
-  console.log(totalSteps,dailySteps,labels)
+  console.log(totalSteps, dailySteps, labels);
 
   return (
     <div className="px-4 pb-44">

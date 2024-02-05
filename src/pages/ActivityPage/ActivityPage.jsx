@@ -7,10 +7,10 @@ const ActivityPage = () => {
   const [isFitConnected, setIsFitConnected] = useState(false);
 
   const getAccessToFit = async () => {
-    const res = await fetch("http://localhost:3000/auth");
-    const data = await res.json();
-    window.location.href = data.redirect_url;
-    // setIsFitConnected(true)
+    // const res = await fetch("http://localhost:3000/auth");
+    // const data = await res.json();
+    // window.location.href = data.redirect_url;
+    setIsFitConnected(true)
   };
 
 
