@@ -1,0 +1,130 @@
+{
+  "bucket": [
+    {
+      "startTimeMillis": "1706466600000",
+      "endTimeMillis": "1706553000000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1706488412662000000",
+              "endTimeNanos": "1706547921611316249",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 4153, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "startTimeMillis": "1706553000000",
+      "endTimeMillis": "1706639400000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1706582834915322785",
+              "endTimeNanos": "1706638139747332997",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 8945, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "startTimeMillis": "1706639400000",
+      "endTimeMillis": "1706725800000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1706675840322186119",
+              "endTimeNanos": "1706724256508223770",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 3704, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "startTimeMillis": "1706725800000",
+      "endTimeMillis": "1706812200000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1706759034530401659",
+              "endTimeNanos": "1706810350745381895",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 4230, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "startTimeMillis": "1706812200000",
+      "endTimeMillis": "1706898600000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1706814032702890154",
+              "endTimeNanos": "1706895546692354401",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 4063, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "startTimeMillis": "1706898600000",
+      "endTimeMillis": "1706985000000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1706937586676411151",
+              "endTimeNanos": "1706958568727019723",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 2479, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "startTimeMillis": "1706985000000",
+      "endTimeMillis": "1707071400000",
+      "dataset": [
+        {
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:aggregated",
+          "point": [
+            {
+              "startTimeNanos": "1707030497684356106",
+              "endTimeNanos": "1707069608372943378",
+              "dataTypeName": "com.google.step_count.delta",
+              "originDataSourceId": "raw:com.google.step_count.cumulative:Xiaomi:M2101K9AI:8e352e3e:pedometer  Non-wakeup",
+              "value": [{ "intVal": 105, "mapVal": [] }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
