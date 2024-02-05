@@ -28,10 +28,10 @@ const BottomNavigation = () => {
             color={isActive("/activity") ? "#1A4CD3" : "#FFF"}
           />
         </Link>
-        <Link>
+        <Link to="/chat">
           <MessageCircleMore
             size={24}
-            color={isActive("/message") ? "#1A4CD3" : "#FFF"}
+            color={isActive("/chat") ? "#1A4CD3" : "#FFF"}
           />
         </Link>
       </div>
