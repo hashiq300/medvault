@@ -21,6 +21,7 @@ import {
   getMetadata,
 } from "firebase/storage";
 import userStore from "@/store/userStore";
+import PrescriptionInput from "@/components/PrescriptionInput";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -29,6 +30,7 @@ function getTypeOfDocument(name) {
   if (name === "hospital_report") return "Hospital Report";
   if (name === "other_docs") return "Other Documents";
 }
+
 
 const DocumentsPage = () => {
   const [drawerContent, setDrawerContent] = useState(null);
@@ -43,12 +45,43 @@ const DocumentsPage = () => {
   const [otherDocs, setOtherDocs] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [medicineName, setMedicineName] = useState("");
+  const [frequency, setFrequency] = useState("");
+
   const insuranceRef = useRef(null);
   const hospitalReportRef = useRef(null);
   const otherDocsRef = useRef(null);
   const scanDocRef = useRef(null);
 
   const { user } = userStore();
+
+  const handleFileButtonClick = (ref, fileType) => {
+    setUploadFileType(fileType);
+    ref.current.click();
+  };
+
+  const uploadScannedPrescription = (event) => {
+    console.log(event);
+    setUploadFileType("prescription");
+    handleFileChange(event);
+    uploadDocument();
+  };
+
+  const handleFileChange = (event) => {
+    event.preventDefault();
+    const file = event.target.files[0];
+    if (!file) return;
+
+    console.log(file);
+    setFiles(file);
+
+    const localPreviewUrl = URL.createObjectURL(file);
+
+    // You can now use this URL to display the file in your UI, for example:
+    console.log("Preview URL:", localPreviewUrl);
+
+    setPreviewUrl(localPreviewUrl);
+  };
 
   const uploadDocument = (documentType) => {
     const storageRef = ref(storage, `${documentType}/${files.name}`);
@@ -72,6 +105,19 @@ const DocumentsPage = () => {
           setDocUrl(downloadURL);
           setPreviewUrl("");
           setProgresspercent(0);
+
+          if (uploadFileType === "prescription") {
+            console.log(uploadFileType);
+            console.log(downloadURL);
+            console.log("call to vision API");
+          }
+        });
+      }
+    );
+  };
+
+  // name, dose, frequency, remarks
+
         });
       }
     );
@@ -106,27 +152,17 @@ const DocumentsPage = () => {
   const allDocs = [...insuranceDocs, ...hospitalReportDocs, ...otherDocs];
   // name dose, frequency, remarks
 
+
   const scanDocument = () => {
     scanDocRef.current.click();
   };
 
   const inputPrescription = () => {
-    setDrawerContent(
-      <div className="pt-10 flex flex-col gap-8">
-        <InputBox
-          placeholder="Product Name"
-          value="Insulin 40IU/ml Injection"
-        />
-        <InputBox placeholder="Frequency" value="3" />
-        <button className=" w-full flex flex-row gap-1 justify-center items-center">
-          <PlusIcon size={20} color="#707070" />
-          <span className="text-[#707070] text-base">add more details</span>
-        </button>
-        <button className="w-full rounded-2xl bg-[#1A4CD3] py-4">
-          Confirm
-        </button>
-      </div>
-    );
+    const handleChange = (e) => {
+      setMedicineName(e.target.value);
+    };
+
+    setDrawerContent(<PrescriptionInput />);
   };
 
   const resetDrawerContent = () => {
@@ -155,27 +191,6 @@ const DocumentsPage = () => {
   };
 
   const setDrawerContentToDocs = () => {
-    const handleFileButtonClick = (ref, fileType) => {
-      setUploadFileType(fileType);
-      ref.current.click();
-    };
-
-    const handleFileChange = (event) => {
-      event.preventDefault();
-      const file = event.target.files[0];
-      if (!file) return;
-
-      console.log(file);
-      setFiles(file);
-
-      const localPreviewUrl = URL.createObjectURL(file);
-
-      // You can now use this URL to display the file in your UI, for example:
-      console.log("Preview URL:", localPreviewUrl);
-
-      setPreviewUrl(localPreviewUrl);
-    };
-
     setDrawerContent(
       <div>
         <div>
@@ -260,7 +275,12 @@ const DocumentsPage = () => {
           >
             <Scan size={35} />
             <p className=" text-sm">Scan</p>
-            <input ref={scanDocRef} type="file" className=" hidden" />
+            <input
+              onChange={uploadScannedPrescription}
+              ref={scanDocRef}
+              type="file"
+              className="hidden"
+            />
           </button>
         </div>
       </div>

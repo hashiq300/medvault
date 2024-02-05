@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: "steps", element: <StepsPage /> },
       { path: "vitals", element: <VitalsPage /> },
       { path: "sleep", element: <SleepPage /> },
-      { path: "chat", element: <ChatPage />}
+      { path: "chat", element: <ChatPage /> },
     ],
   },
   {
