@@ -29,7 +29,7 @@ const EditProfilePage = () => {
           <InputBox placeholder="Gender" type="text" value="Male" />
         </div>
         <InputBox placeholder="Email" type="email" value={user?.email} />
-        <InputBox placeholder="Name" type="password" value="12345" />
+        <InputBox placeholder="Password" type="password" value="12345" />
         <Link to="/" className=" bg-blue-700 py-4 rounded-2xl text-lg text-center">
           Confirm
         </Link>
