@@ -24,6 +24,7 @@ import userStore from "@/store/userStore";
 import PrescriptionInput from "@/components/PrescriptionInput";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
+import axios from "axios";
 
 function getTypeOfDocument(name) {
   if (name === "insurance") return "insurance";
@@ -110,8 +111,13 @@ const DocumentsPage = () => {
             console.log(uploadFileType);
             console.log(downloadURL);
             console.log("call to vision API");
+            axios.post("http://localhost:5000/get-prescription", {
+              "prescription_image": downloadURL,
+            }).then((res) => console.log(res.data)).catch(err => console.log(err));
+          }else{
+            window.location.reload()
           }
-        });
+        })
       }
     );
   };

@@ -4,6 +4,7 @@ import userStore from "@/store/userStore";
 import { Rocket } from "lucide-react";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import axios from "axios";
 
 function ChatPage() {
   const { messages, addMessage } = chatStore();
@@ -15,15 +16,19 @@ function ChatPage() {
     setLoading(true);
     if(input.trim() === "") return;
     addMessage("user", input);
+    axios.post("http://localhost:5000/chat", {
+      message: input,
+    }).then((res) => {
+      addMessage("bot", res.data);
+    }).catch(err => console.log(err)).finally(() => setLoading(false));
     setInput("");
-    setLoading(false);
   }
   return (
     <main className="mx-6">
       <h1 className="text-3.5xl font-ibmflexserif border-b border-lightsilver pb-4">
         BloomAI
       </h1>
-      <div className="space-y-4 pt-4">
+      <div className="space-y-4 pt-4 min-h-[70%] overflow-auto pb-48">
         {messages.map((message, i) => (
           <Message key={i} from={message.from} message={message.message} />
         ))}
@@ -33,11 +38,11 @@ function ChatPage() {
         disabled={loading}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="bg-transparent border-lightsilver border  px-6 py-3 absolute w-[87%] md:w-[90%] bottom-[6rem] rounded-sm"
+          className="bg-[#1C1E27] border-lightsilver border  px-6 py-3 fixed w-[87%] md:w-[90%] bottom-[6rem] rounded-sm "
           type="text"
           placeholder="Enter text..."
         />
-        <button disabled={loading} className="absolute bottom-[6rem] right-[10%] -translate-y-3 bg-[#1A4CD3] text-white p-2 rounded-sm">
+        <button disabled={loading} className="fixed bottom-[6rem] right-[10%] -translate-y-3 bg-[#1A4CD3] text-white p-2 rounded-sm">
           <Rocket size={12} />
         </button>
       </form>

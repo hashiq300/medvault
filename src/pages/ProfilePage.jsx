@@ -4,6 +4,7 @@ import { Pen, Trash, HelpCircle, LogOut } from "lucide-react";
 import userStore from "@/store/userStore";
 import { signOut } from "firebase/auth";
 import { auth } from "@/config/firebase";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   const { user } = userStore();
@@ -40,12 +41,12 @@ const ProfilePage = () => {
         </div>
 
         <div className=" flex flex-col gap-4">
-          <a href="/profile/edit">
+          <Link to="/profile/edit">
             <button className="w-full flex items-center gap-5 bg-[#1C1E27] p-5 rounded-2xl">
               <Pen size={30} />
               <p>Edit profile</p>
             </button>
-          </a>
+          </Link>
 
           <button className="w-full flex items-center gap-5 bg-[#1C1E27] p-5 rounded-2xl">
             <HelpCircle size={30} />
