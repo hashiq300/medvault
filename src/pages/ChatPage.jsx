@@ -16,7 +16,7 @@ function ChatPage() {
     setLoading(true);
     if(input.trim() === "") return;
     addMessage("user", input);
-    axios.post("http://localhost:5000/chat", {
+    axios.post(" https://6e5a-2409-40f3-100b-2c2a-d236-ad14-ace6-d586.ngrok-free.app/chat", {
       message: input,
     }).then((res) => {
       addMessage("bot", res.data);
