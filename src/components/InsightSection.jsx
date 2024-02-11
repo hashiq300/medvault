@@ -12,7 +12,7 @@ function InsightSection() {
   const date = useMemo(() => getCurrentFormattedDate(), []);
 
   useEffect(() => {
-    axios.get("https://api.quotable.io/random").then((res) => {
+    axios.get("http://api.quotable.io/random").then((res) => {
       setQuote(res.data.content);
       setAuthor(res.data.author);
     })
